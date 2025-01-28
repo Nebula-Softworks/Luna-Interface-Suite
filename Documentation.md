@@ -72,7 +72,7 @@ we did not skid this from rayfield, pretty sure rayfield skidded this from us th
 However, If you would still like to use your own custom icons, You may do so by changing the Icon value to the ID of ur image (DO NOT INCLUDE rbxassetid://) and Changing ImageSource to Custom.
 
 #### Creating A Tab
-This will show u how to create the instance of a tab. I reccomend storing them in a table but it is fine for the docs.
+This will show u how to create the instance of a tab. I recommend storing them in a table but it is fine for the docs.
 ```lua
 local Tab = Window:CreateTab({
 	Name = "Tab Example",
