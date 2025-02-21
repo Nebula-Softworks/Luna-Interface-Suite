@@ -2405,7 +2405,7 @@ function Luna:CreateWindow(WindowSettings)
 				if KeyFound then 
 					for _, instance in pairs(KeySystem:GetDescendants()) do
 						if instance.ClassName ~= "UICorner" and instance.ClassName ~= "UIPadding" then
-							if instance.ClassName ~= "UIStroke" then
+							if instance.ClassName ~= "UIStroke" and instance.ClassName ~= "UIListLayout" then
 								tween(instance, {BackgroundTransparency = 1}, nil,TweenInfo.new(0.6, Enum.EasingStyle.Exponential))
 							end
 							if instance.ClassName == "ImageButton" then
@@ -2553,7 +2553,7 @@ function Luna:CreateWindow(WindowSettings)
 			if v == identifyexecutor() then
 				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Supports This Script."
 			else
-				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Isn't Officialy Supported By This Script."
+				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Isn't Officially Supported By This Script."
 			end
 		end
 
