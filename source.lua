@@ -2760,7 +2760,7 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			function Section:Destroy()
-				Section:Destroy()
+				Sectiont:Destroy()
 			end
 
 			-- Divider
