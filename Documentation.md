@@ -17,7 +17,7 @@ This Documentation Is Last Updated for Prerelease Beta 6.1
 # Documentation For Luna
 ## Booting The Library
 ```lua
-local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/main/source.lua", true))()
+local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
 ```
 > This loads up the library to use our Elements. No parameters required
 
