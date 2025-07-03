@@ -2552,8 +2552,10 @@ function Luna:CreateWindow(WindowSettings)
 			if isStudio then HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Luna Interface Suite - Debugging Mode" break end
 			if v == identifyexecutor() then
 				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Supports This Script."
+				break
 			else
-				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Isn't Officially Supported By This Script."
+				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Isn't Officialy Supported By This Script."
+				break
 			end
 		end
 
@@ -2760,7 +2762,7 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			function Section:Destroy()
-				Section:Destroy()
+				Sectiont:Destroy()
 			end
 
 			-- Divider
@@ -6978,9 +6980,4 @@ end
     t1:CreateDropdown({Callback = function(t) print(unpack(t)) end})
     t1:CreateDropdown({Description = "Special Type - Player", Callback = "", SpecialType = "Player"})
 end]]--
-
-task.delay(4, function() 
-	Luna:LoadAutoloadConfig()
-end)
-
 return Luna

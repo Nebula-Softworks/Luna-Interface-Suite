@@ -1,4 +1,5 @@
 # Introduction
+![Luna](https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/Luna%20Cover%20Image.png)
 This Documentation Is Last Updated for Prerelease Beta 6.1
 ## Why Choose Luna?
   Reliable And Stable  
@@ -9,7 +10,7 @@ This Documentation Is Last Updated for Prerelease Beta 6.1
   
 *Now Let's Get Started, Shall We?*
 
-**Also hope shlex will add this docs.sirius.menu but its fine here lol**  
+**Migrating To The Documentation Page *VERY* Soon. However for now, it is here.**  
 
 ***You may use the github MD Sidebar to navigate through the documentation***
 
@@ -17,7 +18,7 @@ This Documentation Is Last Updated for Prerelease Beta 6.1
 # Documentation For Luna
 ## Booting The Library
 ```lua
-local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/main/source.lua", true))()
+local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
 ```
 > This loads up the library to use our Elements. No parameters required
 
@@ -61,6 +62,9 @@ local Window = Luna:CreateWindow({
 	}
 })
 ```
+> [!IMPORTANT]
+> Make sure to always add this code ``Luna:LoadAutoloadConfig()`` at the bottom of your script!
+> Luna will now automatically load up your saved configuration 😄
 
 #### Luna Icons
 Luna Uses Custom Icons so u do not have to find ans upload your own!
