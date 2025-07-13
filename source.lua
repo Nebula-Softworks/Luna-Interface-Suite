@@ -1602,7 +1602,7 @@ local function GetIcon(icon, source)
 			local iro = Vector2.new(riro[1], riro[2])
 
 			local asset = {
-				id = r[1],
+				id = "rbxassetid://" .. tostring(r[1]),
 				imageRectSize = irs,
 				imageRectOffset = iro,
 			}
@@ -2124,7 +2124,15 @@ function Luna:Notification(data) -- action e.g open messages
 		-- Set Data
 		newNotification.Title.Text = data.Title
 		newNotification.Description.Text = data.Content 
-		newNotification.Icon.Image = GetIcon(data.Icon, data.ImageSource)
+
+		if data.ImageSource == "Lucide" then
+    		local icondata = GetIcon(data.Icon, data.ImageSource)
+    		newNotification.Icon.Image = icondata.id
+    		newNotification.Icon.ImageRectSize = icondata.imageRectSize
+    		newNotification.Icon.ImageRectOffset = icondata.imageRectOffset
+		else
+		    newNotification.Icon.Image = GetIcon(data.Icon, data.ImageSource)
+	    end
 
 		-- Set initial transparency values
 		newNotification.BackgroundTransparency = 1
@@ -2706,7 +2714,15 @@ function Luna:CreateWindow(WindowSettings)
 		TabButton.Name = TabSettings.Name
 		TabButton.TextLabel.Text = TabSettings.Name
 		TabButton.Parent = Navigation.Tabs
-		TabButton.ImageLabel.Image = GetIcon(TabSettings.Icon, TabSettings.ImageSource)
+		
+		if TabSettings.ImageSource == "Lucide" then
+    		local data = GetIcon(TabSettings.Icon, TabSettings.ImageSource)
+    		TabButton.ImageLabel.Image = data.id
+    		TabButton.ImageLabel.ImageRectSize = data.imageRectSize
+    		TabButton.ImageLabel.ImageRectOffset = data.imageRectOffset
+		else
+		    TabButton.ImageLabel.Image = GetIcon(TabSettings.Icon, TabSettings.ImageSource)        
+	    end
 
 		TabButton.Visible = true
 
