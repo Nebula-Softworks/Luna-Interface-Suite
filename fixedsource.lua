@@ -1551,42 +1551,50 @@ local PresetGradients = {
 }
 
 local function GetIcon(icon, source)
-	if source == "Custom" then
-		return "rbxassetid://" .. icon
-	elseif source == "Lucide" then
-		-- full credit to latte softworks :)
-		local iconData = not isStudio and game:HttpGet("https://raw.githubusercontent.com/latte-soft/lucide-roblox/refs/heads/master/lib/Icons.luau")
-		local icons = isStudio and IconModule.Lucide or loadstring(iconData)()
-		if not isStudio then
-			icon = string.match(string.lower(icon), "^%s*(.*)%s*$") :: string
-			local sizedicons = icons['48px']
+    if source == "Custom" then
+        if tonumber(icon) then
+            return "rbxassetid://" .. tostring(icon)
+        else
+            warn("[Luna] Invalid Custom Icon ID: " .. tostring(icon))
+            return nil
+        end
 
-			local r = sizedicons[icon]
-			if not r then
-				error("Lucide Icons: Failed to find icon by the name of \"" .. icon .. "\.", 2)
-			end
+    elseif source == "Lucide" then
+        local iconData = not isStudio and game:HttpGet("https://raw.githubusercontent.com/latte-soft/lucide-roblox/refs/heads/master/lib/Icons.luau")
+        local icons = isStudio and IconModule.Lucide or loadstring(iconData)()
 
-			local rirs = r[2]
-			local riro = r[3]
+        if not icons then
+            warn("[Luna] Failed to load Lucide icon library.")
+            return nil
+        end
 
-			if type(r[1]) ~= "number" or type(rirs) ~= "table" or type(riro) ~= "table" then
-				error("Lucide Icons: Internal error: Invalid auto-generated asset entry")
-			end
+        icon = string.lower(string.match(icon, "^%s*(.-)%s*$")) -- trim spaces, lowercase
+        local sizedicons = icons['48px']
+        local r = sizedicons[icon]
 
-			local irs = Vector2.new(rirs[1], rirs[2])
-			local iro = Vector2.new(riro[1], riro[2])
+        if not r then
+            warn("[Luna] Lucide Icon not found: " .. tostring(icon))
+            return nil -- gracefully return nil instead of erroring
+        end
 
-			local asset = {
-				id = r[1],
-				imageRectSize = irs,
-				imageRectOffset = iro,
-			}
+        local irs = Vector2.new(r[2][1], r[2][2])
+        local iro = Vector2.new(r[3][1], r[3][2])
 
-			return asset
-		else
-			return "rbxassetid://10723434557"
-		end
-	else	
+        return {
+            id = r[1],
+            imageRectSize = irs,
+            imageRectOffset = iro,
+        }
+
+    elseif IconModule[source] then
+        local sourceicon = IconModule[source]
+        return sourceicon[icon] or nil
+    else
+        warn("[Luna] Invalid Icon Source: " .. tostring(source))
+        return nil
+    end
+end
+
 		if icon ~= nil and IconModule[source] then
 			local sourceicon = IconModule[source]
 			return sourceicon[icon]
